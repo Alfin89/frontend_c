@@ -1,7 +1,6 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
-
+import { Platform, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
@@ -15,12 +14,12 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
+        headerShown: true,
+        header: () => <CustomTopBar />,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
             position: 'absolute',
           },
           default: {},
@@ -43,3 +42,41 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+
+function CustomTopBar() {
+  return (
+    <View style={styles.topBar}>
+      {/* Icon Menu */}
+      <TouchableOpacity>
+        <IconSymbol name="line.horizontal.3" size={24} color="#6b6b6b" />
+      </TouchableOpacity>
+
+      {/* Title */}
+      <Text style={styles.title}>Beranda</Text>
+
+      {/* Icon Notification */}
+      <TouchableOpacity>
+        <IconSymbol name="bell" size={24} color="#6b6b6b" />
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  topBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#C79C1E',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e0e0e0',
+    paddingTop: 35,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#6b6b6b',
+  },
+});
