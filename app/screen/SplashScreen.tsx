@@ -12,7 +12,7 @@ export default function SplashScreen({ onFinish }: { onFinish: () => void }) {
   return (
     <View style={styles.container}>
       {/* <Image
-        source={require('@/assets/images/splash-logo.png')} // Ganti dengan logo Anda
+        source={require('@/assets/images/splash-logo.png')} 
         style={styles.logo}
       /> */}
         <Text >
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1D3D47', // Ganti warna sesuai tema Anda
+    backgroundColor: '#1D3D47', 
   },
   logo: {
     width: 200,

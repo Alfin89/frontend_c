@@ -17,14 +17,14 @@ export default function HomeScreen() {
       {/* Menu Icons */}
       <View style={styles.menuContainer}>
         {[
-          { label: 'Kelola Produk', key: 'kelola' },
-          { label: 'Pegawai', key: 'pegawai' },
-          { label: 'Outlet', key: 'outlet' },
-          { label: 'Saldo Wallet', key: 'wallet' },
-          { label: 'Bantuan', key: 'bantuan' },
+          { label: 'Kelola Produk', key: 'kelola', icon: require('@/assets/images/icon/shopping-cart.png') },
+          { label: 'Pegawai', key: 'pegawai', icon: require('@/assets/images/icon/employee-man.png') },
+          { label: 'Outlet', key: 'outlet', icon: require('@/assets/images/icon/shop.png') },
+          { label: 'Saldo Wallet', key: 'wallet', icon: require('@/assets/images/icon/wallet.png') },
+          { label: 'Bantuan', key: 'bantuan', icon: require('@/assets/images/icon/exclamation.png') },
         ].map((item, index) => (
           <TouchableOpacity key={index} style={styles.menuItem}>
-            <View style={styles.menuIcon} />
+            <Image source={item.icon} style={styles.menuIcon} />
             <Text style={styles.menuText}>{item.label}</Text>
           </TouchableOpacity>
         ))}
@@ -49,6 +49,11 @@ export default function HomeScreen() {
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Paket Berlangganan</Text>
         <TouchableOpacity style={styles.promoCard}>
+          <Image
+            source={require('@/assets/images/banner-placeholder.png')}
+            style={styles.promoImage}
+            resizeMode="contain"
+          />
           <Text style={styles.promoText}>Langganan Kasir Pro untuk fitur lengkap!</Text>
         </TouchableOpacity>
       </View>
@@ -57,6 +62,11 @@ export default function HomeScreen() {
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Perangkat Tambahan</Text>
         <TouchableOpacity style={styles.promoCard}>
+          <Image
+            source={require('@/assets/images/banner-placeholder.png')}
+            style={styles.promoImage}
+            resizeMode="contain"
+          />
           <Text style={styles.promoText}>Makin Canggih dengan Perangkat Kasir</Text>
         </TouchableOpacity>
       </View>
@@ -102,8 +112,6 @@ const styles = StyleSheet.create({
   menuIcon: {
     width: 50,
     height: 50,
-    backgroundColor: '#ddd',
-    borderRadius: 25,
     marginBottom: 8,
   },
   menuText: {
@@ -144,9 +152,15 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
   },
+  promoImage: {
+    width: '100%',
+    height: 100,
+    marginBottom: 8,
+  },
   promoText: {
     fontSize: 14,
     fontWeight: 'bold',
     color: '#e74c3c',
+    textAlign: 'center',
   },
 });
